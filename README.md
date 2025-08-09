@@ -11,10 +11,11 @@ EcoRewards is a full-stack application that encourages users to return plastic c
 3. [Database Model](#database-model)
 4. [Project Folder Structure](#project-folder-structure)
 5. [Backend Setup](#backend-setup)
-6. [Frontend Setup](#frontend-setup)
-7. [Environment Variables](#environment-variables)
-8. [Tech Stack](#tech-stack)
-9. [Team](#Team)
+6. [Backend API Reference](#backend-api-reference)
+7. [Frontend Setup](#frontend-setup)
+8. [Environment Variables](#environment-variables)
+9. [Tech Stack](#tech-stack)
+10. [Team](#Team)
 11. [Feedback](##feedback)
 
 ---
@@ -161,6 +162,19 @@ cd backend
 ./mvnw spring-boot:run
 ```
 API runs at: http://localhost:8080
+
+---
+
+# 📡 Backend API Reference
+
+| Method | Endpoint                     | Description | Request Example | Response Example |
+|--------|------------------------------|-------------|-----------------|------------------|
+| `POST` | `/api/scan`                   | Scan a barcode from an uploaded image file | `multipart/form-data` with field `file` | `"✅ Cover accepted. 10 points awarded."` |
+| `POST` | `/api/scan-barcode`           | Scan a barcode sent as plain text (manual entry) | `{ "barcode": "1234567890" }` | `{ "message": "Cover accepted", "barcode": "1234567890", "pointsAwarded": 10 }` |
+| `GET`  | `/api/scan-barcode`           | Fallback for GET requests — returns error | – | `"❌ This endpoint only supports POST requests."` |
+| `GET`  | `/api/user?email={email}`     | Get user details by email | – | `{ "id": 1, "email": "user@example.com", "ecoPoints": 120, ... }` |
+| `GET`  | `/api/return-history?email={email}` | Get return history for a user | – | `[ { "barcode": "1234567890", "date": "2025-08-09", "points": 10 } ]` |
+| `POST` | `/api/send-summary-email`     | Send an email summary after a scan session | `{ "email": "user@example.com", "totalPoints": 50, "barcodes": ["123456", "654321"] }` | `"✅ Summary email sent successfully."` |
 
 ---
 
