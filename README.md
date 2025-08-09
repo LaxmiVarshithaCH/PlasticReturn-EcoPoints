@@ -14,7 +14,8 @@ EcoRewards is a full-stack application that encourages users to return plastic c
 6. [Frontend Setup](#frontend-setup)
 7. [Environment Variables](#environment-variables)
 8. [Tech Stack](#tech-stack)
-9. [License](#license)
+9. [Contributors](#contributors)
+11. [Feedback](##feedback)
 
 ---
 
@@ -93,7 +94,7 @@ erDiagram
 ---
 
 ## 📂 Project Folder Structure
-
+```text
 eco-rewards/
 │
 ├── frontend/                  # React + Vite frontend
@@ -120,6 +121,9 @@ eco-rewards/
 ├── .gitignore
 ├── README.md
 └── LICENSE
+```
+
+---
 
 ## ⚙️ Backend Setup
 Install Java 17+ and Maven.
@@ -147,6 +151,9 @@ cd backend
 ./mvnw spring-boot:run
 ```
 API runs at: http://localhost:8080
+
+---
+
 ## ⚛️ Frontend Setup
 Install Node.js 18+ and npm.
 Configure frontend/.env:
@@ -160,11 +167,17 @@ npm install
 npm run dev
 ```
 Visit: http://localhost:5173
+
+---
+
 ## 🔑 Environment Variables
 Location	Variable Name	Description
 Frontend	REACT_APP_API_URL	Backend API base URL
 Backend	spring.datasource.*	MySQL connection settings
 Backend	spring.mail.*	Email server configuration
+
+---
+
 ## 🧰 Tech Stack
 Frontend
 React + Vite
@@ -222,9 +235,30 @@ ZXing (barcode scanning)
 
 ---
 
-## 📝 License
+## Contributors
 
-MIT License
+<a href="https://github.com/LaxmiVarshithaCH">
+  <img src="https://avatars.githubusercontent.com/YourUsername" width="50" height="50" style="border-radius: 50%"/>
+</a>
+<a href="https://github.com/2300030861">
+  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
+</a>
+<a href="https://github.com/2300030861">
+  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
+</a>
+<a href="https://github.com/2300030861">
+  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
+</a>
+<a href="https://github.com/2300030861">
+  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
+</a>
+
+---
+
+## 📬 Feedback
+Have suggestions or improvements?
+
+Feel free to open an issue or submit a pull request. Happy coding! 🚀
 
 ---
 
