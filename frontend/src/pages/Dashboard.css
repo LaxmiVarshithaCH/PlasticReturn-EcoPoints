@@ -1,0 +1,46 @@
+.dashboard-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2e7d32;
+}
+
+.user-card {
+  background-color: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.user-card .points {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.history-table th {
+  background-color: #a5d6a7;
+}
+
+.history-table tr:nth-child(even) {
+  background-color: #f1f8e9;
+}

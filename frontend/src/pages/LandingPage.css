@@ -1,0 +1,38 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+  text-align: center;
+  padding: 40px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #4e4e4e;
+  margin-bottom: 30px;
+}
+
+.scan-button {
+  background-color: #2e7d32;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.scan-button:hover {
+  background-color: #1b5e20;
+}

@@ -1,0 +1,62 @@
+.scanner-container {
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scanner-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+.camera-box {
+  width: 500px;
+  height: 400px;
+  background-color: black;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.status-text {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.stop-button {
+  padding: 10px 20px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.stop-button:hover {
+  background-color: #b71c1c;
+}
+
+@media (max-width: 600px) {
+  .camera-box {
+    width: 100%;
+    height: 300px;
+  }
+
+  .scanner-title {
+    font-size: 1.5rem;
+  }
+}
