@@ -1,4 +1,4 @@
-# ♻️ EcoRewards: Plastic Return System
+# ♻️ EcoPoints: Plastic Return System
 
 EcoRewards is a full-stack application that encourages users to return plastic covers by scanning them, awarding EcoPoints, and providing dashboards and summary emails. Built with **Spring Boot** (backend) and **React + Vite** (frontend).
 
@@ -133,17 +133,27 @@ CREATE DATABASE ecorewards;
 ```
 Configure backend/src/main/resources/application.properties:
 ``` bash
-spring.datasource.url=jdbc:mysql://localhost:3306/ecorewards
+spring.application.name=plasticreturn
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
-# Email configuration
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+server.port=8080
+
+#Email Configuration
+
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
-spring.mail.username=your_email@gmail.com
-spring.mail.password=your_app_password
+spring.mail.username=your_mail
+spring.mail.password=zhhx etns kqhe srav
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=5000
+spring.mail.properties.mail.smtp.writetimeout=5000
 ```
 Run the backend:
 ``` bash
