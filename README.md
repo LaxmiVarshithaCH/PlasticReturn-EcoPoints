@@ -51,6 +51,38 @@ eco-points-system/
 
 ---
 
+## 📂 Project Folder Structure
+
+eco-points-system/
+│
+├── frontend/ # React.js frontend
+│ ├── public/ # Static assets
+│ ├── src/ # Application source code
+│ │ ├── components/ # Reusable UI components
+│ │ ├── pages/ # Page-level components
+│ │ ├── services/ # API service calls (Axios)
+│ │ ├── App.js # Root component
+│ │ └── index.js # Entry point
+│ ├── package.json # Frontend dependencies & scripts
+│ └── .env # API base URL (not committed to Git)
+│
+├── backend/ # Spring Boot backend
+│ ├── src/
+│ │ ├── main/
+│ │ │ ├── java/ # Java source code
+│ │ │ │ └── com/example/ecopoints/ # Backend packages
+│ │ │ └── resources/ # Config files (application.properties)
+│ │ └── test/ # Unit & integration tests
+│ ├── pom.xml # Maven build file
+│ └── target/ # Compiled backend files (ignored in Git)
+│
+├── .gitignore # Ignore unnecessary files
+├── README.md # Project documentation
+└── LICENSE # (Optional) License file
+---
+
+
+
 ## ⚙️ Setup & Installation
 
 ### 1️⃣ Clone the Repository
@@ -101,20 +133,20 @@ Create .env inside frontend/:
 
 REACT_APP_API_URL=http://localhost:8080/api
 
+---
 
 ### 🔄 Workflow
 - Customer Returns Cover – Barcode is scanned via frontend.
-
 - Backend Processes Return – Validates barcode and updates EcoPoints.
-
 - Points Update – Adds 10 EcoPoints to user’s account.
-
 - Email Notification – Sends total updated EcoPoints to customer.
 
+---
 
 ### 📷 Screenshots
 Add screenshots of your UI here.
 
+---
 
 ### 📜 License
 This project is for educational and portfolio purposes.
