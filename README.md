@@ -14,7 +14,7 @@ EcoRewards is a full-stack application that encourages users to return plastic c
 6. [Frontend Setup](#frontend-setup)
 7. [Environment Variables](#environment-variables)
 8. [Tech Stack](#tech-stack)
-9. [Contributors](#contributors)
+9. [Team](#Team)
 11. [Feedback](##feedback)
 
 ---
@@ -235,23 +235,44 @@ ZXing (barcode scanning)
 
 ---
 
-## Contributors
+## 👥 Team
 
-<a href="https://github.com/LaxmiVarshithaCH">
-  <img src="https://avatars.githubusercontent.com/YourUsername" width="50" height="50" style="border-radius: 50%"/>
-</a>
-<a href="https://github.com/2300030861">
-  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
-</a>
-<a href="https://github.com/2300030861">
-  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
-</a>
-<a href="https://github.com/2300030861">
-  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
-</a>
-<a href="https://github.com/2300030861">
-  <img src="https://avatars.githubusercontent.com/OtherContributor" width="50" height="50" style="border-radius: 50%"/>
-</a>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/LaxmiVarshithaCH">
+        <img src="https://avatars.githubusercontent.com/USERNAME1" width="100px;" alt=""/>
+        <br />
+        <sub><b>Chennupalli Laxmi Varshitha</b></sub>
+      </a>
+      <br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/2300030861">
+        <img src="https://avatars.githubusercontent.com/USERNAME2" width="100px;" alt=""/>
+        <br />
+        <sub><b>Dorbala Sai Sujitha</b></sub>
+      </a>
+      <br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/USERNAME3">
+        <img src="https://avatars.githubusercontent.com/USERNAME3" width="100px;" alt=""/>
+        <br />
+        <sub><b>Dorbala Sai Nikitha</b></sub>
+      </a>
+      <br />
+    </td>
+      <td align="center">
+      <a href="https://github.com/USERNAME3">
+        <img src="https://avatars.githubusercontent.com/USERNAME3" width="100px;" alt=""/>
+        <br />
+        <sub><b>Chittelu Nissy</b></sub>
+      </a>
+      <br />
+    </td>
+  </tr>
+</table>
 
 ---
 
