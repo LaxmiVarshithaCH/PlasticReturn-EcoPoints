@@ -1,158 +1,231 @@
-# EcoPoints – Plastic Cover Return System
+# ♻️ EcoRewards: Plastic Return System
 
-A **full-stack web application** that encourages customers to return plastic covers from previous purchases by rewarding them with EcoPoints.  
-The system scans the barcode on the cover, updates the user's EcoPoints balance, and sends an email notification with the updated total.
-
----
-
-## 📌 Features
-
-- 📦 **Barcode Scanning** – Customers scan the barcode on returned plastic covers.
-- ♻️ **EcoPoints Rewards** – +10 EcoPoints for every successful return.
-- 📧 **Email Notifications** – Automatic email sent after each update showing the total EcoPoints.
-- 🌐 **Full Stack Architecture** – React frontend and Spring Boot backend integration.
-- 📊 **User Account Tracking** – Persistent eco-points balance for each user.
+EcoRewards is a full-stack application that encourages users to return plastic covers by scanning them, awarding EcoPoints, and providing dashboards and summary emails. Built with **Spring Boot** (backend) and **React + Vite** (frontend).
 
 ---
 
-## 🛠 Tech Stack
+## 📚 Table of Contents
 
-**Frontend**
-- React.js
-- Axios (API communication)
-- HTML5, CSS3, JavaScript
-
-**Backend**
-- Spring Boot (Java)
-- REST API
-- MySQL (database)
-- JavaMail API (email notifications)
+1. [Features](#features)
+2. [Architecture Overview](#architecture-overview)
+3. [Database Model](#database-model)
+4. [Project Folder Structure](#project-folder-structure)
+5. [Backend Setup](#backend-setup)
+6. [Frontend Setup](#frontend-setup)
+7. [Environment Variables](#environment-variables)
+8. [Tech Stack](#tech-stack)
+9. [License](#license)
 
 ---
 
-## 📂 Folder Structure
+## 🚀 Features
 
-eco-points-system/
-│
-├── frontend/ # React application
-│ ├── public/
-│ ├── src/
-│ ├── package.json
-│ └── ...
-│
-├── backend/ # Spring Boot application
-│ ├── src/main/java/
-│ ├── src/main/resources/
-│ ├── pom.xml
-│ └── ...
-│
-└── README.md
+- **Scan** plastic cover barcodes using your camera or manual input
+- **Award EcoPoints** for every valid return (+10 per cover)
+- **Dashboard** to track user points and return history
+- **Email summary** after each scan session
+- **MySQL** persistence for users, covers, and history
 
+---
+
+## 🏗️ Architecture Overview
+
+```mermaid
+flowchart TD
+    subgraph Frontend [React + Vite]
+        A1[Landing Page]
+        A2[Barcode Scanner]
+        A3[Dashboard]
+    end
+    subgraph Backend [Spring Boot]
+        B1[PlasticReturnController]
+        B2[EmailController]
+        B3[PlasticReturnService]
+        B4[EmailService]
+        B6[Repositories & DB]
+    end
+    subgraph EmailService [SMTP]
+        C1[Gmail SMTP]
+    end
+
+    A2 -- "POST /api/scan-barcode" --> B1
+    A2 -- "POST /api/send-summary-email" --> B2
+    A3 -- "GET /api/user" --> B1
+    A3 -- "GET /api/return-history" --> B1
+
+    B1 -- "calls" --> B3
+    B2 -- "calls" --> B4
+    B1 -- "uses" --> B6
+    B2 -- "uses" --> B6
+    B4 -- "sends mail via" --> C1
+```
+
+---
+
+## 🗄️ Database Model
+
+```mermaid
+erDiagram
+    USER {
+        Long id PK
+        String name
+        String email
+        int ecoPoints
+    }
+    PLASTICCOVER {
+        Long id PK
+        String barcode
+        LocalDateTime purchaseDate
+        boolean isReturned
+        Long user_id FK
+    }
+    RETURNHISTORY {
+        Long id PK
+        String barcode
+        LocalDateTime returnDate
+        int pointsAwarded
+        Long user_id FK
+    }
+    USER ||--o{ PLASTICCOVER : "owns"
+    USER ||--o{ RETURNHISTORY : "has"
+```
 
 ---
 
 ## 📂 Project Folder Structure
 
-eco-points-system/
+eco-rewards/
 │
-├── frontend/ # React.js frontend
-│ ├── public/ # Static assets
-│ ├── src/ # Application source code
-│ │ ├── components/ # Reusable UI components
-│ │ ├── pages/ # Page-level components
-│ │ ├── services/ # API service calls (Axios)
-│ │ ├── App.js # Root component
-│ │ └── index.js # Entry point
-│ ├── package.json # Frontend dependencies & scripts
-│ └── .env # API base URL (not committed to Git)
+├── frontend/                  # React + Vite frontend
+│   ├── public/                 # Static assets
+│   ├── src/                    # App source code
+│   │   ├── components/         # Reusable UI components
+│   │   ├── pages/              # Page-level components
+│   │   ├── services/           # API calls
+│   │   ├── App.jsx              # Root component
+│   │   └── main.jsx             # Entry point
+│   ├── package.json
+│   └── .env                    # API base URL (ignored in Git)
 │
-├── backend/ # Spring Boot backend
-│ ├── src/
-│ │ ├── main/
-│ │ │ ├── java/ # Java source code
-│ │ │ │ └── com/example/ecopoints/ # Backend packages
-│ │ │ └── resources/ # Config files (application.properties)
-│ │ └── test/ # Unit & integration tests
-│ ├── pom.xml # Maven build file
-│ └── target/ # Compiled backend files (ignored in Git)
+├── backend/                   # Spring Boot backend
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/           # Java source code
+│   │   │   │   └── com/example/ecorewards/
+│   │   │   └── resources/      # Config files (application.properties)
+│   │   └── test/               # Unit tests
+│   ├── pom.xml
+│   └── target/                 # Build output (ignored in Git)
 │
-├── .gitignore # Ignore unnecessary files
-├── README.md # Project documentation
-└── LICENSE # (Optional) License file
----
+├── .gitignore
+├── README.md
+└── LICENSE
 
-
-
-## ⚙️ Setup & Installation
-
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/your-username/eco-points-system.git
-cd eco-points-system
+## ⚙️ Backend Setup
+Install Java 17+ and Maven.
+Create a MySQL database:
+``` bash
+CREATE DATABASE ecorewards;
 ```
-### 2️⃣ Backend Setup (Spring Boot)
-```bash
-cd backend
-# Build and run
-./mvnw spring-boot:run
-```
-
-**Backend will be available at:**
-http://localhost:8080
-
-**Backend Configuration**
-
-Edit src/main/resources/application.properties:
-```bash
-spring.datasource.url=jdbc:mysql://localhost:3306/ecopointsdb
+Configure backend/src/main/resources/application.properties:
+``` bash
+spring.datasource.url=jdbc:mysql://localhost:3306/ecorewards
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
-
-# Email settings
-spring.mail.host=smtp.your-email-provider.com
+# Email configuration
+spring.mail.host=smtp.gmail.com
 spring.mail.port=587
-spring.mail.username=your_email@example.com
-spring.mail.password=your_email_password
+spring.mail.username=your_email@gmail.com
+spring.mail.password=your_app_password
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
 ```
-
-### 3️⃣ Frontend Setup (React)
-```bash
+Run the backend:
+``` bash
+cd backend
+./mvnw spring-boot:run
+```
+API runs at: http://localhost:8080
+## ⚛️ Frontend Setup
+Install Node.js 18+ and npm.
+Configure frontend/.env:
+``` bash
+REACT_APP_API_URL=http://localhost:8080/api
+```
+Start the frontend:
+``` bash
 cd frontend
 npm install
-npm start
+npm run dev
 ```
-**Frontend will be available at:**
-http://localhost:3000
-
-**Frontend Configuration**
-
-Create .env inside frontend/:
-
-REACT_APP_API_URL=http://localhost:8080/api
-
----
-
-### 🔄 Workflow
-- Customer Returns Cover – Barcode is scanned via frontend.
-- Backend Processes Return – Validates barcode and updates EcoPoints.
-- Points Update – Adds 10 EcoPoints to user’s account.
-- Email Notification – Sends total updated EcoPoints to customer.
-
----
-
-### 📷 Screenshots
-Add screenshots of your UI here.
+Visit: http://localhost:5173
+## 🔑 Environment Variables
+Location	Variable Name	Description
+Frontend	REACT_APP_API_URL	Backend API base URL
+Backend	spring.datasource.*	MySQL connection settings
+Backend	spring.mail.*	Email server configuration
+## 🧰 Tech Stack
+Frontend
+React + Vite
+Axios
+CSS Modules
+react-qr-barcode-scanner
+Backend
+Spring Boot
+Spring Data JPA
+MySQL
+JavaMail
+ZXing (barcode scanning)
 
 ---
 
-### 📜 License
-This project is for educational and portfolio purposes.
+## ⚛️ Frontend Overview
 
+- **Landing Page**: Introduction and start scanning CTA
+- **Scanner**: Scan barcodes via camera, send to backend, show messages & points, send summary email at session end
+- **Dashboard**: View user EcoPoints, and return history in a table
 
+---
 
+## 🏁 Getting Started
 
+### Backend
 
+1. **Configure MySQL** and update `src/main/resources/application.properties` with your DB credentials.
+2. **Run the backend**:
+    ```sh
+    ./mvnw spring-boot:run
+    ```
+3. Database is auto-seeded with demo users and covers.
 
+### Frontend
+
+1. `cd` into the frontend directory.
+2. Install dependencies:
+    ```sh
+    npm install
+    ```
+3. Start the dev server:
+    ```sh
+    npm run dev
+    ```
+4. Visit [http://localhost:5173](http://localhost:5173) to use the app.
+
+---
+
+## 🧰 Tech Stack
+
+- **Backend**: Spring Boot, Spring Data JPA, MySQL, JavaMail, ZXing (barcode)
+- **Frontend**: React, Vite, Axios, react-qr-barcode-scanner
+- **Styling**: CSS modules, responsive and accessible UI
+
+---
+
+## 📝 License
+
+MIT License
+
+---
+
+**Let’s make the world greener, one plastic cover at a time! 🌱**
