@@ -65,10 +65,13 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-Backend will be available at:
+**Backend will be available at:**
 http://localhost:8080
-Backend Configuration
+
+**Backend Configuration**
+
 Edit src/main/resources/application.properties:
+```bash
 spring.datasource.url=jdbc:mysql://localhost:3306/ecopointsdb
 spring.datasource.username=your_username
 spring.datasource.password=your_password
@@ -81,6 +84,7 @@ spring.mail.username=your_email@example.com
 spring.mail.password=your_email_password
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
+```
 
 ### 3️⃣ Frontend Setup (React)
 ```bash
@@ -88,17 +92,25 @@ cd frontend
 npm install
 npm start
 ```
-Frontend will be available at:
+**Frontend will be available at:**
 http://localhost:3000
-Frontend Configuration
+
+**Frontend Configuration**
+
 Create .env inside frontend/:
+
 REACT_APP_API_URL=http://localhost:8080/api
 
+
 ### 🔄 Workflow
-Customer Returns Cover – Barcode is scanned via frontend.
-Backend Processes Return – Validates barcode and updates EcoPoints.
-Points Update – Adds 10 EcoPoints to user’s account.
-Email Notification – Sends total updated EcoPoints to customer.
+- Customer Returns Cover – Barcode is scanned via frontend.
+
+- Backend Processes Return – Validates barcode and updates EcoPoints.
+
+- Points Update – Adds 10 EcoPoints to user’s account.
+
+- Email Notification – Sends total updated EcoPoints to customer.
+
 
 ### 📷 Screenshots
 Add screenshots of your UI here.
