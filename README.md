@@ -1,4 +1,4 @@
-# ♻️ EcoReturn: Plastic Return System
+# ♻️ EcoReturn: Return and Earn
 
 EcoRewards is a full-stack application that encourages users to return plastic covers by scanning them, awarding EcoPoints, and providing dashboards and summary emails. Built with **Spring Boot** (backend) and **React + Vite** (frontend).
 
